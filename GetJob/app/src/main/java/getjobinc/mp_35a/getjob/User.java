@@ -5,8 +5,9 @@ public class User {
     private String login;
     private String name;
     private String surname;
-    public User(String name,String surname) {
+    public User(String name,String surname,String login) {
         this.name = name;
         this.surname = surname;
+        this.login = login;
     }
 }
