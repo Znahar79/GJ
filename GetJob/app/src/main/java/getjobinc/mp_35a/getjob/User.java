@@ -3,28 +3,145 @@ package getjobinc.mp_35a.getjob;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.logging.Level;
 //Check Git
 public class User {
-    private static UserType currentSession;
-    private String password;
-    private String login;
-    private String name;
-    private String surname;
-    public User(String name,String surname,String login,String password) {
-        this.name = name;
-        this.surname = surname;
-        this.login = login;
-        this.password = password;
-    }
     // Type of user
     public enum UserType {
         Unauthorized,
         SimpleUser,
         Developer,
-        SelfTest
+        SelfTest,
+        Moderator
     }
-    private static class UserDB {
+    private static UserType currentSession;
+    private ArrayList <Vacancy> userVacancys = new ArrayList<>();
+
+
+
+    private String password;
+    private String login;
+    private String name;
+    private String surname;
+    private String email;
+    private String summary;
+    private String phone;
+    private String tag;
+    private float rating;
+
+    public User(String name,String surname,String login,
+                String password, String email, String summary,
+                String phone, String tag , UserType status,
+                               float rating) {
+        this.name = name;
+        this.surname = surname;
+        this.login = login;
+        this.password = password;
+        this.email = email;
+        this.summary = summary;
+        this.phone = phone;
+        this.tag = tag;
+        this.currentSession = status;
+        this.rating = rating;
+    }
+
+    public void  CreateNewUser(String name,String surname,String login,
+                               String password, String email, String summary,
+                               String phone, String tag , UserType status,
+                               float rating) {
+        this.name = name;
+        this.surname = surname;
+        this.login = login;
+        this.password = password;
+        this.email = email;
+        this.summary = summary;
+        this.phone = phone;
+        this.tag = tag;
+        this.currentSession = status;
+        this.rating = rating;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getSummary() {
+        return summary;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public String getTag() {
+        return tag;
+    }
+
+    public float getRating() {
+        return rating;
+    }
+
+    public static void setCurrentSession(UserType currentSession) {
+        User.currentSession = currentSession;
+    }
+
+    public ArrayList<Vacancy> getUserVacancys() {
+        return userVacancys;
+    }
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setSummary(String summary) {
+        this.summary = summary;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public void setTag(String tag) {
+        this.tag = tag;
+    }
+
+    public void setRating(float rating) {
+        this.rating = rating;
+    }
+
+    /*private static class UserDB {
         // Constants for work with tablet in DB
         final private static class UserTable {
             final public static String NAME = "users";
@@ -33,6 +150,10 @@ public class User {
                 static public final String LOGIN = "login";
                 static public final String PASSWORD = "pass";
                 static public final String STATUS = "status";
+                static public final String USERNAME = "name";
+                static public final String SURNAME = "surname";
+                static public final String EMAIL =  "email";
+                static public final float RATING = 5;
             }
         }
 
@@ -77,12 +198,12 @@ public class User {
 
             if ((status != UserType.Developer && status != UserType.SelfTest) || currentSession == UserType.Developer) {
                 // Creating request with user data  in tablet
-                /**
-                 * When trying to add an existing user \ error in the work of the database itself
-                 * SQLException is thrown and the function returns false.
-                 * If the registration is successful, the function returns true.
-                 **/
-                // TODO Обработка исключения для индивидуальной обработки сценариев, описанных выше
+                //**
+                 //* When trying to add an existing user \ error in the work of the database itself
+                // * SQLException is thrown and the function returns false.
+                // * If the registration is successful, the function returns true.
+
+
                 try {
                     Statement userAdding = userDB.createStatement();
 
@@ -125,7 +246,7 @@ public class User {
              * reading the result (userInfo) is thrown SQLException and the function returns Unathorized.
              * In case of successful finding of information, the function returns the status of the found user.
              */
-            // TODO Обработка исключения для индивидуальной обработки сценариев, описанных выше
+
             /*
             try (Statement userRecieving = userDB.createStatement()) {
                 //logger.log(Level.INFO,"Attempt to read UserDB record");
@@ -162,10 +283,10 @@ public class User {
                 e.printStackTrace();
 
                 return UserType.Unauthorized;
-            }*/
+            }
             return UserType.SimpleUser;
         }
-    }
+    }*/
     static {
         currentSession = UserType.Unauthorized;
     }
@@ -190,17 +311,21 @@ public class User {
         String login = ConfigAPI.getLogin();
         String password = ConfigAPI.getPassword();
 
-        // Trying to get acces using them
+        // Trying to get access using them
         if (login != null && password != null) {
             return logIn(login, password);
         } else {
             return false;
         }
     }*/
-    public static boolean createNewUser(String login, String password, UserType status) {
+    /*
+    public static boolean createNewUser(String login, String password, String email,
+                                        String name, String surname, String phone,
+                                        String summary, String tag, UserType status) {
         //logger.log(Level.INFO, "Creating a new user...");
         // Проверка успешности регистрации
-            if (UserDB.regUser(login, password, status)) {
+            if (UserDB.regUser(login, password, status, email, name,
+                    surname, phone, summary, tag)) {
                 currentSession = status;
 
                 return currentSession != UserType.Unauthorized;
@@ -210,5 +335,5 @@ public class User {
     }
     public static UserType getStatus() {
         return currentSession;
-    }
+    }*/
 }
