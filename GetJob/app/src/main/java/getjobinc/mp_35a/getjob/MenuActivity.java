@@ -1,5 +1,6 @@
 package com.example.nikit.getjob;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -12,16 +13,44 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 public class MenuActivity extends AppCompatActivity
+
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    String[] names = { "1", "2", "3", "4", "5", "6",
+            "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17" };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        //Обработка ListView  https://startandroid.ru/ru/uroki/vse-uroki-spiskom/82-urok42-spisok-listview.html
+        //
+        // находим список
+        ListView LsView = (ListView) findViewById(R.id.LsView);
+
+        // создаем адаптер
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1, names);
+
+        // присваиваем адаптер списку
+        LsView.setAdapter(adapter);
+        //
+        //
+
+        LsView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+                Intent intent = new Intent(MenuActivity.this, WorkActivity.class);
+                startActivity(intent);
+            }
+        });
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -97,5 +126,9 @@ public class MenuActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+    public void onClickWork(View view) {
+        Intent intent = new Intent(MenuActivity.this, WorkActivity.class);
+        startActivity(intent);
     }
 }
