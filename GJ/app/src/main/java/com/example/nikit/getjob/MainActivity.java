@@ -67,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
                             dataBase.getRegUsers().get(i).getPassword(),dataBase.getRegUsers().get(i).getEmail(),
                             dataBase.getRegUsers().get(i).getPhone(),dataBase.getRegUsers().get(i).getTag(),
                             User.UserType.SimpleUser, dataBase.getRegUsers().get(i).getRating());
+                    currentUser = old;
                     break;
                 }
             }

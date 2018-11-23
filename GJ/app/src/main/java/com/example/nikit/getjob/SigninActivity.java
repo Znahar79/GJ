@@ -65,7 +65,15 @@ public class SigninActivity extends AppCompatActivity {
             boolean t = c1 & c2;
             t = t & c3;
             if (t == true) {
-                
+                EditText edit1 = (EditText) findViewById(R.id.editText3);//имя
+                EditText edit2 = (EditText) findViewById(R.id.editText4);//Фамилия
+                EditText edit3 = (EditText) findViewById(R.id.editText7);//Телефон
+                EditText edit4 = (EditText) findViewById(R.id.editText8);//Email
+                EditText edit5 = (EditText) findViewById(R.id.editText9);//Пароль
+                dataBase.addUser(new User(edit1.getText().toString(), edit2.getText().toString(),
+                        edit5.getText().toString(), edit4.getText().toString(),
+                        edit3.getText().toString(), "New One",
+                        User.UserType.SimpleUser,(float)0.0));
                 Intent intent = new Intent(SigninActivity.this, MainActivity.class);
                 startActivity(intent);
             } else {
