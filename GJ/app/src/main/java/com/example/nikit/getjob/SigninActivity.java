@@ -10,15 +10,16 @@ import android.widget.Toast;
 public class SigninActivity extends AppCompatActivity {
     private class WorkSignIn extends MainActivity {
         public boolean checkPassword(ListOfRegUsers list) {
-            boolean t;
+            boolean t = true;
             EditText edit = (EditText) findViewById(R.id.editText9);
             EditText edit1 = (EditText) findViewById(R.id.editText10);
-            t = edit.getText().toString().equals(edit1.getText().toString());
-            if (t == false) {
+            //t = edit.getText().toString().equals(edit1.getText().toString());
+            if (!edit.getText().toString().equals(edit1.getText().toString())) {
+                t = false;
                 return t;
             }
             for (int i = 0; i < list.getRegUsers().size(); i++) {
-                if (edit.getText().toString().equals(list.getRegUsers().get(i).getPassword())) {
+                if (!edit.getText().toString().equals(list.getRegUsers().get(i).getPassword())) {
                     t = false;
                     return t;
                 }
@@ -30,7 +31,7 @@ public class SigninActivity extends AppCompatActivity {
             boolean t = true;
             EditText edit = (EditText) findViewById(R.id.editText8);
             for (int i = 0; i < list.getRegUsers().size(); i++) {
-                if (edit.getText().toString().equals(list.getRegUsers().get(i).getEmail())) {
+                if (!edit.getText().toString().equals(list.getRegUsers().get(i).getEmail())) {
                     t = false;
                     return t;
                 }
@@ -42,7 +43,7 @@ public class SigninActivity extends AppCompatActivity {
             boolean t = true;
             EditText edit = (EditText) findViewById(R.id.editText7);
             for (int i = 0; i < list.getRegUsers().size(); i++) {
-                if (edit.getText().toString().equals(list.getRegUsers().get(i).getPhone())) {
+                if (!edit.getText().toString().equals(list.getRegUsers().get(i).getPhone())) {
                     t = false;
                     return t;
                 }
@@ -64,6 +65,7 @@ public class SigninActivity extends AppCompatActivity {
             boolean t = c1 & c2;
             t = t & c3;
             if (t == true) {
+                
                 Intent intent = new Intent(SigninActivity.this, MainActivity.class);
                 startActivity(intent);
             } else {

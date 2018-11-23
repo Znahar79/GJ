@@ -19,22 +19,22 @@ public class MainActivity extends AppCompatActivity {
     UserCreator creator=new UserCreator(dataBase);
     User currentUser = new User();
 
-    public boolean checkEmail(ListOfRegUsers list){
+    protected boolean checkEmail(ListOfRegUsers list){
         boolean t = true;
         EditText edit = (EditText)findViewById(R.id.editText);
         for (int i = 0; i<list.getRegUsers().size(); i++){
-            if(edit.getText().toString().equals(list.getRegUsers().get(i).getEmail())){
+            if(!edit.getText().toString().equals(list.getRegUsers().get(i).getEmail())){
                 t = false;
                 return t;
             }
         }
         return t;
     }
-    public boolean checkPassword(ListOfRegUsers list){
+    protected boolean checkPassword(ListOfRegUsers list){
         boolean t = true;
         EditText edit = (EditText)findViewById(R.id.editText2);
         for (int i = 0; i<list.getRegUsers().size(); i++){
-            if(edit.getText().toString().equals(list.getRegUsers().get(i).getPassword())){
+            if(!edit.getText().toString().equals(list.getRegUsers().get(i).getPassword())){
                 t = false;
                 return t;
             }
@@ -60,7 +60,16 @@ public class MainActivity extends AppCompatActivity {
         boolean c2 = checkPassword(dataBase);
         boolean t = c1 & c2;
         if(t == true) {
-            //User old = ;
+            User old;
+            for(int i = 0; i < dataBase.getRegUsers().size();i++){
+                if(edit.getText().toString().equals(dataBase.getRegUsers().get(i).getPassword())){
+                    old = new User(dataBase.getRegUsers().get(i).getName(),dataBase.getRegUsers().get(i).getSurname(),
+                            dataBase.getRegUsers().get(i).getPassword(),dataBase.getRegUsers().get(i).getEmail(),
+                            dataBase.getRegUsers().get(i).getPhone(),dataBase.getRegUsers().get(i).getTag(),
+                            User.UserType.SimpleUser, dataBase.getRegUsers().get(i).getRating());
+                    break;
+                }
+            }
             Intent intent = new Intent(MainActivity.this, MenuActivity.class);
             startActivity(intent);
         }
