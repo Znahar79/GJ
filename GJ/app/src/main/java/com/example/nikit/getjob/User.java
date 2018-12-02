@@ -4,10 +4,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.logging.Level;
 
 public class User {
-
+//TODO Добавить город проживания и дату рождения
     // Type of user
     public enum UserType {
         Unauthorized,
@@ -25,6 +26,8 @@ public class User {
     private String summary;
     private String phone;
     private String tag;
+    private String city;
+    private Date dateOfBirth;
     private float rating;
 
     public User() {
@@ -36,6 +39,8 @@ public class User {
         this.phone = " ";
         this.tag = " ";
         this.currentSession = UserType.Unauthorized;
+        this.city = " ";
+        this.dateOfBirth = new Date(0,0,0);
         this.rating = 0;
     }
     public User(String name,String surname,

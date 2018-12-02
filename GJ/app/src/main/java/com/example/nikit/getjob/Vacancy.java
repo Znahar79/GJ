@@ -11,6 +11,7 @@ import java.util.concurrent.Executors;
 public class Vacancy {
     private String desription;
     private String title;
+    private User creator;
     private static ArrayList<String> tags = new ArrayList<>();
 
     public String getDesription() {
@@ -35,6 +36,14 @@ public class Vacancy {
 
     public static void setTags(ArrayList<String> tags) {
         Vacancy.tags = tags;
+    }
+
+    public User getCreator() {
+        return creator;
+    }
+
+    public void setCreator(User creator) {
+        this.creator = creator;
     }
 }
 

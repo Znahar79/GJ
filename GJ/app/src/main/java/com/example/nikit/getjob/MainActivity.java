@@ -13,11 +13,7 @@ import java.util.ArrayList;
 
 
 public class MainActivity extends AppCompatActivity {
-    //DataBase initialize
-    ListOfRegUsers dataBase = new ListOfRegUsers();
-    //Linking UserCreator to our dataBase
-    UserCreator creator=new UserCreator(dataBase);
-    User currentUser = new User();
+
 
     protected boolean checkEmail(ListOfRegUsers list){
         boolean t = true;
@@ -45,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        creator.DeafaultData();
+        MainMenu.creator.DeafaultData();
     }
 
     //Method activates when click on button "РЕГИСТРАЦИЯ"
@@ -56,18 +52,18 @@ public class MainActivity extends AppCompatActivity {
     //Method activates when click on button "ВХОД"
     public void onClickLogin(View view) {
         EditText edit = (EditText)findViewById(R.id.editText2);
-        boolean c1 = checkEmail(dataBase);
-        boolean c2 = checkPassword(dataBase);
+        boolean c1 = checkEmail(MainMenu.dataBase);
+        boolean c2 = checkPassword(MainMenu.dataBase);
         boolean t = c1 & c2;
         if(t == true) {
             User old;
-            for(int i = 0; i < dataBase.getRegUsers().size();i++){
-                if(edit.getText().toString().equals(dataBase.getRegUsers().get(i).getPassword())){
-                    old = new User(dataBase.getRegUsers().get(i).getName(),dataBase.getRegUsers().get(i).getSurname(),
-                            dataBase.getRegUsers().get(i).getPassword(),dataBase.getRegUsers().get(i).getEmail(),
-                            dataBase.getRegUsers().get(i).getPhone(),dataBase.getRegUsers().get(i).getTag(),
-                            User.UserType.SimpleUser, dataBase.getRegUsers().get(i).getRating());
-                    currentUser = old;
+            for(int i = 0; i < MainMenu.dataBase.getRegUsers().size();i++){
+                if(edit.getText().toString().equals(MainMenu.dataBase.getRegUsers().get(i).getPassword())){
+                    old = new User(MainMenu.dataBase.getRegUsers().get(i).getName(),MainMenu.dataBase.getRegUsers().get(i).getSurname(),
+                            MainMenu.dataBase.getRegUsers().get(i).getPassword(),MainMenu.dataBase.getRegUsers().get(i).getEmail(),
+                            MainMenu.dataBase.getRegUsers().get(i).getPhone(),MainMenu.dataBase.getRegUsers().get(i).getTag(),
+                            User.UserType.SimpleUser, MainMenu.dataBase.getRegUsers().get(i).getRating());
+                    MainMenu.currentUser = old;
                     break;
                 }
             }

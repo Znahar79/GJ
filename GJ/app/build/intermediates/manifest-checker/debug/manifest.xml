@@ -37,6 +37,14 @@
                 android:value="com.example.nikit.getjob.MainActivity" />
         </activity>
         <activity android:name="com.example.nikit.getjob.WorkActivity" />
+        <activity android:name="com.example.nikit.getjob.MainMenu" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.example.nikit.getjob.ForgotPassport" />
 
         <provider
             android:name="com.android.tools.ir.server.InstantRunContentProvider"

@@ -1042,10 +1042,15 @@ drawable tooltip_frame_light
 id ALT
 id CTRL
 id FUNCTION
+id Help
 id LsView
 id META
+id NameAndSurname
+id Partners
 id SHIFT
 id SYM
+id SearcherMain
+id TechSupport
 id UserNameAndSurname
 id action0
 id action_bar
@@ -1081,6 +1086,8 @@ id bottom
 id button
 id button2
 id button3
+id button4
+id button6
 id buttonPanel
 id cancel_action
 id center
@@ -1113,6 +1120,7 @@ id disableHome
 id drawer_layout
 id editText
 id editText10
+id editText11
 id editText2
 id editText3
 id editText4
@@ -1136,6 +1144,7 @@ id fill_vertical
 id filled
 id fixed
 id forever
+id forgotPassword
 id ghost_view
 id gone
 id group_divider
@@ -1146,7 +1155,9 @@ id icon
 id icon_group
 id ifRoom
 id image
+id imageButton
 id imageView
+id imageView2
 id info
 id invisible
 id italic
@@ -1186,6 +1197,7 @@ id parallax
 id parent
 id parentPanel
 id parent_matrix
+id partners
 id percent
 id pin
 id progress_circular
@@ -1220,6 +1232,7 @@ id shortcut
 id showCustom
 id showHome
 id showTitle
+id signin_or_reg
 id smallLabel
 id snackbar_action
 id snackbar_text
@@ -1244,12 +1257,15 @@ id tag_unhandled_key_event_manager
 id tag_unhandled_key_listeners
 id text
 id text2
+id textInputLayout
+id textInputLayout2
 id textSpacerNoButtons
 id textSpacerNoTitle
 id textStart
 id textView
 id textView2
 id textView3
+id textView4
 id text_input_password_toggle
 id textinput_counter
 id textinput_error
@@ -1323,9 +1339,12 @@ layout abc_search_dropdown_item_icons_2line
 layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
+layout activity_forgot_passport
 layout activity_main
+layout activity_main_menu
 layout activity_menu
 layout activity_signin
+layout activity_user_page
 layout activity_work
 layout app_bar_menu
 layout content_menu
