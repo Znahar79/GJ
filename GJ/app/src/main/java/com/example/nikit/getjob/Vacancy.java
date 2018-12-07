@@ -12,7 +12,7 @@ public class Vacancy {
     private String desription;
     private String title;
     private User creator;
-    private static ArrayList<String> tags = new ArrayList<>();
+    private static String tag;
 
     public String getDesription() {
         return desription;
@@ -22,8 +22,8 @@ public class Vacancy {
         return title;
     }
 
-    public static ArrayList<String> getTags() {
-        return tags;
+    public String getTags() {
+        return tag;
     }
 
     public void setDesription(String desription) {
@@ -34,8 +34,8 @@ public class Vacancy {
         this.title = title;
     }
 
-    public static void setTags(ArrayList<String> tags) {
-        Vacancy.tags = tags;
+    public void setTags(String tags) {
+        this.tag = tags;
     }
 
     public User getCreator() {

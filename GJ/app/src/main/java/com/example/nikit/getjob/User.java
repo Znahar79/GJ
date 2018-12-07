@@ -18,7 +18,7 @@ public class User {
         Moderator
     }
     private static UserType currentSession;
-    private ArrayList <Vacancy> userVacancys = new ArrayList<>();
+    protected ArrayList <Vacancy> userVacancys = new ArrayList<>();
     private String password;
     private String name;
     private String surname;

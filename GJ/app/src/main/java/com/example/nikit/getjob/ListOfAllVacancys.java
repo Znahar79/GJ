@@ -10,7 +10,7 @@ public class ListOfAllVacancys {
     }
 
     //Way to add new data
-    public void addUser(Vacancy newVacancy) {
+    public void addVacancy(Vacancy newVacancy) {
         Vacancys.add(newVacancy);
     }
 }

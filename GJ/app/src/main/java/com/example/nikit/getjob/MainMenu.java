@@ -11,7 +11,7 @@ public class MainMenu extends AppCompatActivity {
     static ListOfRegUsers dataBase = new ListOfRegUsers();
     static ListOfAllVacancys dataBaseVacancys = new ListOfAllVacancys();
     //Linking UserCreator to our dataBase
-    static UserCreator creator=new UserCreator(dataBase);
+    static UserCreator creator=new UserCreator(dataBase,dataBaseVacancys);
     static User currentUser = new User();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,4 +24,10 @@ public class MainMenu extends AppCompatActivity {
         Intent intent = new Intent(MainMenu.this, MainActivity.class);
         startActivity(intent);
     }
+    //Method activates when click on button "Авторизация"
+    public void onClickSearch(View view) {
+        Intent intent = new Intent(MainMenu.this, MainActivity.class);
+        startActivity(intent);
+    }
+
 }

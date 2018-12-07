@@ -36,8 +36,8 @@
         android:layout_marginEnd="27dp"
         android:layout_marginRight="27dp"
         android:ems="10"
+        android:hint="Искать вакансию"
         android:inputType="textShortMessage"
-        android:text="Искать вакансию"
         app:layout_constraintBottom_toBottomOf="@+id/imageButton"
         app:layout_constraintEnd_toStartOf="@+id/imageButton" />
 

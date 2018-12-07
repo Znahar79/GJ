@@ -10,29 +10,30 @@ import android.widget.Toast;
 public class SigninActivity extends AppCompatActivity {
     //public abstract class WorkSignIn extends MainActivity {
         public boolean checkPassword(ListOfRegUsers list) {
-            boolean t = true;
+            boolean t = false;
             EditText edit = (EditText) findViewById(R.id.editText9);
             EditText edit1 = (EditText) findViewById(R.id.editText10);
             //t = edit.getText().toString().equals(edit1.getText().toString());
-            if (!edit.getText().toString().equals(edit1.getText().toString())) {
-                t = false;
-                return t;
+            if (edit.getText().toString().equals(edit1.getText().toString())) {
+                t = true;
+                //return t;
             }
             for (int i = 0; i < list.getRegUsers().size(); i++) {
-                if (!edit.getText().toString().equals(list.getRegUsers().get(i).getPassword())) {
-                    t = false;
-                    return t;
+                if (edit.getText().toString().equals(list.getRegUsers().get(i).getPassword())) {
+                    t = true;
+                    //return t;
+                    break;
                 }
             }
             return t;
         }
 
         public boolean checkEmail(ListOfRegUsers list) {
-            boolean t = true;
+            boolean t = false;
             EditText edit = (EditText) findViewById(R.id.editText8);
             for (int i = 0; i < list.getRegUsers().size(); i++) {
-                if (!edit.getText().toString().equals(list.getRegUsers().get(i).getEmail())) {
-                    t = false;
+                if (edit.getText().toString().equals(list.getRegUsers().get(i).getEmail())) {
+                    t = true;
                     return t;
                 }
             }
@@ -40,11 +41,11 @@ public class SigninActivity extends AppCompatActivity {
         }
 
         public boolean checkPhone(ListOfRegUsers list) {
-            boolean t = true;
+            boolean t = false;
             EditText edit = (EditText) findViewById(R.id.editText7);
             for (int i = 0; i < list.getRegUsers().size(); i++) {
                 if (!edit.getText().toString().equals(list.getRegUsers().get(i).getPhone())) {
-                    t = false;
+                    t = true;
                     return t;
                 }
             }
